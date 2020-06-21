@@ -162,10 +162,19 @@ function getForecast(req, resp) {
  * @return {ExpressServer} instance of the Express server.
  */
 function startServer() {
-  const app = express();
+   const app = express();
+const PORT = 3000;
+const HOST = '0.0.0.0';
+
+//   app.get('/',(req,res)=>{
+//     res.send("Yeoowwww!\n");
+//   });
+
+// app.listen(PORT, HOST);
+// console.log(`Running On http://${HOST}:${PORT}`);
 
   // Redirect HTTP to HTTPS,
-  app.use(redirectToHTTPS([/localhost:(\d{4})/], [], 301));
+  //app.use(redirectToHTTPS([/localhost:(\d{4})/], [], 301));
 
   // Logging for each request
   app.use((req, resp, next) => {
@@ -187,9 +196,10 @@ function startServer() {
   app.use(express.static('public'));
 
   // Start the server
-  return app.listen('8000', () => {
+  return app.listen(PORT, HOST, () => {
     // eslint-disable-next-line no-console
-    console.log('Local DevServer Started on port 8000...');
+    console.log('Local DevServer Started on port XX 8000...');
+    console.log(`Running On http://${HOST}:${PORT}`);
   });
 }
 
